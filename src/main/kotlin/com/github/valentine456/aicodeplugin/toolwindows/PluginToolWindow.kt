@@ -1,5 +1,7 @@
 package com.github.valentine456.aicodeplugin.toolwindows
 
+import com.github.valentine456.aicodeplugin.services.CodeExplainerService
+import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
@@ -12,6 +14,7 @@ import java.awt.BorderLayout
 class PluginToolWindowFactory : ToolWindowFactory {
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
         val panel = PluginToolWindowPanel()
+        project.service<CodeExplainerService>().panel = panel
         val content = ContentFactory.getInstance().createContent(panel, "", false)
         toolWindow.contentManager.addContent(content)
     }

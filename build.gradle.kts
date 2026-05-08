@@ -26,6 +26,10 @@ tasks.withType<RunIdeTask> {
     envProps.forEach { (k, v) -> systemProperty(k, v) }
 }
 
+tasks.withType<Test> {
+    envProps.forEach { (k, v) -> systemProperty(k, v) }
+}
+
 configurations.all {
     resolutionStrategy.eachDependency {
         if (requested.group == "org.jetbrains.kotlin" && requested.name.startsWith("kotlin-stdlib")) {
@@ -36,8 +40,12 @@ configurations.all {
 
 dependencies {
     testImplementation("junit:junit:4.13.2")
-    implementation("ai.koog:koog-agents:0.7.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    implementation("ai.koog:koog-agents:0.7.1") {
+        exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-core")
+        exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-core-jvm")
+        exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-jdk8")
+    }
+    compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {

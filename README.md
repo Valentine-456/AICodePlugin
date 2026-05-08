@@ -1,22 +1,34 @@
 # AICodePlugin
 
-![Build](https://github.com/Valentine-456/AICodePlugin/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
+## Test task
+Create a simple AI-related IntelliJ plugin of your choice for IntelliJ Ultimate.
 
-## Template ToDo list
-- [x] Create a new [IntelliJ Platform Plugin Template][template] project.
-- [ ] Get familiar with the [template documentation][template].
-- [ ] Adjust the [group](./gradle.properties), as well as the [id](./src/main/resources/META-INF/plugin.xml), [name](./src/main/resources/META-INF/plugin.xml), and [sources package](./src/main/kotlin).
-- [ ] Adjust the plugin [description](./src/main/resources/META-INF/plugin.xml) (see [Tips][docs:plugin-description]) and this README to describe what your plugin does.
-- [ ] Review the [Legal Agreements](https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html?from=IJPluginTemplate).
-- [ ] [Publish a plugin manually](https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate) for the first time.
-- [ ] Set the `MARKETPLACE_ID` in the above README badges. You can obtain it once the plugin is published to JetBrains Marketplace.
-- [ ] Set the [Plugin Signing](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html?from=IJPluginTemplate) related [secrets](https://github.com/JetBrains/intellij-platform-plugin-template#environment-variables).
-- [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html?from=IJPluginTemplate).
-- [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
+-----------------
 
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
+## Features
+This plugin allows you to select a code snippet and explain what it does using AI in the tool window.
+
+1) Select text you would like to change and right-click on the selection:
+2) Click the action "Explain Code Snippet" - the tool window will pop up with the explanation.
+3) Doing right-click without text selection results in explaining the whole current file.
+   
+-------------
+
+## Idea and Implementation
+
+I developed this idea because my work experience motivated me to create a solution like this.
+In production systems, legacy code is often difficult to understand and wiki pages are frequently outdated, leading to a constant need for onboarding meetings. 
+Although simple, this project meets the requirements and demonstrates my ability to work with AI tools.
+
+------------
+### Further improvement ideas:
+
+- Add markdown support + better UI
+- Add traversal of project/PSI of the usage of the tokens/identifiers that are within the text selection scope.
+- Adding integration of Wiki pages and documentation within RAG/MCP for better explanation of legacy/private code.
+- Add actions that will correct (based on Wiki pages and documentation) the selected code, using llm.
+
+------------
 
 ## Installation
 
