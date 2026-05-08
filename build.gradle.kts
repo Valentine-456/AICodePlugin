@@ -2,25 +2,42 @@ import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 import org.jetbrains.intellij.platform.gradle.tasks.RunIdeTask
 import java.util.Properties
 
-val envFile = rootProject.file(".env")
-val envProps = Properties().apply {
-    if (envFile.exists()) envFile.inputStream().use { load(it) }
+val envProps: Map<String, String> = rootProject.file(".env").let { file ->
+    if (!file.exists()) emptyMap()
+    else file.readLines()
+        .filter { it.isNotBlank() && !it.startsWith("#") }
+        .mapNotNull { line ->
+            val stripped = line.removePrefix("export").trim()
+            val idx = stripped.indexOf('=')
+            if (idx > 0) stripped.substring(0, idx).trim() to stripped.substring(idx + 1).trim()
+            else null
+        }
+        .toMap()
 }
-fun env(key: String): String = envProps.getProperty(key) ?: System.getenv(key) ?: ""
+fun env(key: String): String = envProps[key] ?: System.getenv(key) ?: ""
 
 plugins {
-    id("org.jetbrains.kotlin.jvm")
+    id("org.jetbrains.kotlin.jvm") version "2.3.0"
     id("org.jetbrains.intellij.platform")
     id("org.jetbrains.changelog")
 }
 
 tasks.withType<RunIdeTask> {
-    envProps.forEach { k, v -> environment(k.toString(), v.toString()) }
+    envProps.forEach { (k, v) -> systemProperty(k, v) }
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.jetbrains.kotlin" && requested.name.startsWith("kotlin-stdlib")) {
+            useVersion("2.1.20")
+        }
+    }
 }
 
 dependencies {
     testImplementation("junit:junit:4.13.2")
     implementation("ai.koog:koog-agents:0.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {

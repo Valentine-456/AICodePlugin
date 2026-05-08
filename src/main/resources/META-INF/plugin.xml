@@ -13,7 +13,18 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-<!--        <toolWindow factoryClass="com.github.valentine456.aicodeplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>-->
-<!--        <postStartupActivity implementation="com.github.valentine456.aicodeplugin.startup.MyProjectActivity" />-->
+        <toolWindow id="AICodePlugin"
+                    anchor="right"
+                    factoryClass="com.github.valentine456.aicodeplugin.toolwindows.PluginToolWindowFactory"/>
     </extensions>
+
+    <actions>
+        <action
+                id="AICodePlugin.ExplainCodeSnippet"
+                class="com.github.valentine456.aicodeplugin.actions.ExplainCodeAction"
+                text="Explain Code Snippet"
+                description="Explains selected code snippet.">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
