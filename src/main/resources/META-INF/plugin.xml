@@ -13,7 +13,7 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.valentine456.aicodeplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.valentine456.aicodeplugin.startup.MyProjectActivity" />
+<!--        <toolWindow factoryClass="com.github.valentine456.aicodeplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>-->
+<!--        <postStartupActivity implementation="com.github.valentine456.aicodeplugin.startup.MyProjectActivity" />-->
     </extensions>
 </idea-plugin>
