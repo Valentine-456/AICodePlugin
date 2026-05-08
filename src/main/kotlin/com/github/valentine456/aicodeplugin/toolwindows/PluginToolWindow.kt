@@ -32,4 +32,9 @@ class PluginToolWindowPanel : JBPanel<PluginToolWindowPanel>(BorderLayout()) {
         textArea.text = text
         textArea.caretPosition = 0
     }
+
+    fun appendText(chunk: String) {
+        textArea.append(chunk)
+        textArea.caretPosition = textArea.document.length
+    }
 }
