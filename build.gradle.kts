@@ -45,7 +45,7 @@ dependencies {
         exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-core-jvm")
         exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-jdk8")
     }
-    compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
