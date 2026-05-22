@@ -40,7 +40,7 @@ configurations.all {
 
 dependencies {
     testImplementation("junit:junit:4.13.2")
-    implementation("ai.koog:koog-agents:0.7.1") {
+    implementation("ai.koog:koog-agents:1.0.0") {
         exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-core")
         exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-core-jvm")
         exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-jdk8")
