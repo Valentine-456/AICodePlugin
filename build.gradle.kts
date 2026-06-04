@@ -17,7 +17,7 @@ val envProps: Map<String, String> = rootProject.file(".env").let { file ->
 fun env(key: String): String = envProps[key] ?: System.getenv(key) ?: ""
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.3.0"
+    id("org.jetbrains.kotlin.jvm") version "2.4.0"
     id("org.jetbrains.intellij.platform")
     id("org.jetbrains.changelog")
 }
